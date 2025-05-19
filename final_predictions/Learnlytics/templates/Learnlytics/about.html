@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BizBud - Data Science Project</title>
+    <link rel="stylesheet" href="{% static 'Learnlytics/css/about.css' %}" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Learnlytics</div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">About</a></li>
+                    <li><a href="{% url 'home' %}#layanan">Services</a></li>
+                    <li><a href="{% url 'home' %}#tentang">Summary</a></li>
+                    <li><a href="{% url 'about' %}">Our Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="tentang">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>
+                    This project is developed by a team of 5 Data Science Bootcamp participants. 
+                    We created a web-based application to visualize and test machine learning models.
+                </p>
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/assets/riska.png.jpg' %}" alt="Aisyah Rahmawati" class="member-photo" />
+                    <div class="member-info">
+                        <h3>1. Aisyah Rahmawati</h3>
+                        <p><strong>Role:</strong> Data Engineer</p>
+                        <p><strong>Contribution:</strong> Mengelola pipeline data, mulai dari akuisisi, pembersihan, hingga transformasi.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/assets/lisa.jpg' %}" alt="Budi Santoso" class="member-photo" />
+                    <div class="member-info">
+                        <h3>2. Budi Santoso</h3>
+                        <p><strong>Role:</strong> Machine Learning Specialist</p>
+                        <p><strong>Contribution:</strong> Melatih dan mengevaluasi model ML serta interpretasi hasil.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/assets/clara.jpg' %}" alt="Clara Wijaya" class="member-photo" />
+                    <div class="member-info">
+                        <h3>3. Clara Wijaya</h3>
+                        <p><strong>Role:</strong> Web Developer</p>
+                        <p><strong>Contribution:</strong> Membangun tampilan dan fungsionalitas web termasuk dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/assets/dedi.jpg' %}" alt="Dedi Pratama" class="member-photo" />
+                    <div class="member-info">
+                        <h3>4. Dedi Pratama</h3>
+                        <p><strong>Role:</strong> Project Manager & Data Analyst</p>
+                        <p><strong>Contribution:</strong> Memimpin tim, merancang timeline, dan melakukan analisis eksploratif.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/assets/unknown.jpg' %}" alt="Team Member 5" class="member-photo" />
+                    <div class="member-info">
+                        <h3>5. [Nama Anggota 5]</h3>
+                        <p><strong>Role:</strong> [Peran]</p>
+                        <p><strong>Contribution:</strong> [Kontribusi singkat]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Learnlytics. Data Science.</p>
+    </footer>
+</body>
+</html>
