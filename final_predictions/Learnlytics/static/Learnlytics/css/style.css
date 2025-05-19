@@ -11,6 +11,7 @@ body {
     color: #333;
     padding-top: 70px;
     background-color: #fafafa;
+    height: 100%;
 }
 
 html {
@@ -201,6 +202,7 @@ header nav ul li a {
     background-color: #e3f2fd;
     padding: 60px 20px;
     text-align: center;
+    min-height: 100vh;
 }
 
 #dashboard h2 {
