@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Science Project</title>
+    <link rel="stylesheet" href="{% static 'Learnlytics/css/about.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Learnlytics</div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">About</a></li>
+                    <li><a href="{% url 'home' %}#layanan">Services</a></li>
+                    <li><a href="{% url 'home' %}#dashboard">Analytics</a></li>
+                    <li><a href="{% url 'about' %}">Our Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="tentang">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>
+                    This project is developed by a team of 5 Data Science Bootcamp participants. 
+                    We created a web-based application to visualize and test machine learning models.
+                </p>
+
+                
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/images/embun.jpg' %}" class="member-photo" />
+                    <div class="member-info">
+                        <h3>Embun Aqeela Zahra</h3>
+                        <p><strong>Use Case:</strong> Learning Style Analysis</p>
+                        <p><strong>Contribution:</strong> Developed a web-based analytics dashboard to classify student learning types using K-Means clustering, enabling the identification of "Intensive", "Relaxed", and "Passive" learners. The system includes dynamic visualizations such as distribution charts and activity heatmaps, along with a detailed student profile table showing learning metrics (average duration, session frequency, and night activity). It supports interactive filtering and provides actionable insights for learning behavior analysis.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/images/kejo.jpg' %}" class="member-photo" />
+                    <div class="member-info">
+                        <h3>Kezia Joseph</h3>
+                        <p><strong>Use Case:</strong> Web Developer</p>
+                        <p><strong>Contribution:</strong> Membangun tampilan dan fungsionalitas web termasuk dashboard.</p>
+                    </div>
+                </div>
+
+                
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/images/shalwa.jpg' %}" class="member-photo" />
+                    <div class="member-info">
+                        <h3>Raffila Shalwa Sakina</h3>
+                        <p><strong>Use Case:</strong> Project Manager & Data Analyst</p>
+                        <p><strong>Contribution:</strong> Memimpin tim, merancang timeline, dan melakukan analisis eksploratif.</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                  <img src="{% static 'Learnlytics/images/riska.jpg' %}" class="member-photo" />
+                    <div class="member-info">
+                        <h3>Riska Atikah Rahmawati</h3>
+                        <p><strong>Use Case:</strong> Course Predictions</p>
+                        <p><strong>Contribution:</strong> Contributed to data collection, cleaning, and feature selection to build a course recommendation prediction model for students using Random Forest Classification. The model was integrated into a web application through a Django API to provide real-time recommendations, accompanied by interactive visualizations using Chart.js. Led the team in project development, managed the timeline, designed the user interface (UI) based on team discussions, and conducted regular model retraining to improve the accuracy and relevance of the predictions.</p>
+                    </div>
+                </div>
+
+
+                <div class="team-member">
+                    <img src="{% static 'Learnlytics/images/lisa.jpg' %}" class="member-photo" />
+                    <div class="member-info">
+                        <h3>Tsalitsatul Adhya</h3>
+                        <p><strong>Use Case:</strong> [Peran]</p>
+                        <p><strong>Contribution:</strong> [Kontribusi singkat]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Learnlytics. Data Science.</p>
+    </footer>
+</body>
+</html>

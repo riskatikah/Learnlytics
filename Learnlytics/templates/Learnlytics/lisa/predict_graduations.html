@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Graduation Prediction</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .form-section select,
+        .form-section button {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-section button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-section button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+        }
+
+        .passed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .failed {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            position: relative;
+            height: 300px;
+        }
+
+        #predictionChart {
+            max-height: 300px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Student Graduation Prediction</h1>
+        <p>Use this system to predict a student's graduation status based on their activity in each course.</p>
+    </header>
+
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-section">
+                <label for="stu_id">Select Student:</label>
+                {{ form.stu_id }}
+            </div>
+
+            <div class="form-section">
+                <label for="course_id">Select Course:</label>
+                {{ form.course_id }}
+            </div>
+
+            <div class="form-section">
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+
+        {% if prediction %}
+        <div class="result {% if label == 'PASS ✅' %}passed{% elif label == 'FAIL ❌' %}failed{% else %}warning{% endif %}">
+            <h3>Prediction Result:</h3>
+            <p><strong>Predicted Grade:</strong> {{ grade_pred }}</p>
+
+            <!-- Label for Graduation Status -->
+            <p><strong>Graduation Status:</strong> 
+                {% if label %}
+                    <span style="color: {% if label == 'PASS ✅' %}green{% else %}red{% endif %};">{{ label }}</span>
+                {% else %}
+                    <span style="color: orange;">No prediction available</span>
+                {% endif %}
+            </p>
+
+            <p><strong>Confidence:</strong> 
+                {% if confidence %}
+                    {{ confidence }}
+                {% else %}
+                    <span style="color: orange;">No confidence available</span>
+                {% endif %}
+            </p>
+            <p><strong>Pass Percentage:</strong> {{ pass_percentage }}%</p>
+            <p><strong>Fail Percentage:</strong> {{ fail_percentage }}%</p>
+        </div>
+        {% endif %}
+
+        <div class="chart-container">
+            <canvas id="predictionChart"></canvas>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Student Graduation Prediction | Learnlytics</p>
+    </footer>
+
+    <script>
+        var statusData = {
+            labels: ['Passed', 'Failed'],
+            datasets: [{
+                label: 'Graduation Status',
+                data: [{{ pass_percentage }}, {{ fail_percentage }}], 
+                backgroundColor: ['#28a745', '#f8d7da'], 
+                borderColor: ['#155724', '#721c24'],
+                borderWidth: 1
+            }]
+        };
+
+        var config = {
+            type: 'bar',
+            data: statusData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Prevent chart from resizing dynamically
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100, // Set max value to 100% for the bar chart
+                    }
+                }
+            }
+        };
+
+        var ctx = document.getElementById('predictionChart').getContext('2d');
+        var predictionChart = new Chart(ctx, config);
+    </script>
+
+</body>
+</html>
